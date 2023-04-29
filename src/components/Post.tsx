@@ -1,22 +1,43 @@
 import React, { PropsWithChildren } from 'react';
-import { Box, Card, Image, Text } from 'theme-ui';
-import { AuthorProfile } from './AuthorProfile';
+import { Box, Card, Divider, Image, Text } from 'theme-ui';
+import { Profile } from './Profile';
 
 export const Post: React.FC<
   PropsWithChildren<{
-    imageUrl: string;
+    title: string;
+    desc: string;
+    image: {
+      url: string;
+      createdAt: string;
+      likes: number;
+    };
     author: {
       imageUrl: string;
-      username: string;
+      firstName: string;
+      lastName: string;
     };
   }>
-> = ({ imageUrl, author }) => {
+> = ({ image, author, title, desc }) => {
   return (
-    <Card>
-      <AuthorProfile imageUrl={author.imageUrl} username={author.username} />
+    <Card
+      sx={{
+        padding: '2em',
+      }}
+    >
+      <Profile
+        imageUrl={author.imageUrl}
+        firstName={author.firstName}
+        lastName={author.lastName}
+      />
+      <Divider />
       <Box>
-        <Image src={imageUrl} />
-        <Text></Text>
+        <Image src={image.url} />
+        <Text>{image.createdAt}</Text>
+        <Text>{image.likes}</Text>
+      </Box>
+      <Box>
+        <Text>{title}</Text>
+        <Text>{desc}</Text>
       </Box>
     </Card>
   );

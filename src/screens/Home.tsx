@@ -5,9 +5,16 @@ export const Home = () => {
     <Post
       author={{
         imageUrl: 'https://picsum.photos/200',
-        username: 'johndoe',
+        firstName: 'john',
+        lastName: 'doe',
       }}
-      imageUrl="https://picsum.photos/200/300"
+      image={{
+        url: 'https://picsum.photos/200/300',
+        createdAt: '2021-01-01',
+        likes: 10,
+      }}
+      title="Lorem ipsum."
+      desc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum."
     />
   );
 };
