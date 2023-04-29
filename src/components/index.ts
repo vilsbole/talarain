@@ -1,1 +1,2 @@
-export { Box, Card, Image, Heading, Text } from 'theme-ui';
+export { Box, Image, Heading, Text } from 'theme-ui';
+export * from './Post';

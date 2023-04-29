@@ -1,5 +1,7 @@
 import { swiss } from '@theme-ui/presets';
 
-export default {
+const Theme = {
   ...swiss,
 };
+
+export default Theme;

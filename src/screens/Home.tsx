@@ -1,14 +1,13 @@
-import { Card, Image, Text } from '../components';
+import { Post } from '../components';
 
 export const Home = () => {
   return (
-    <Card
-      sx={{
-        maxWidth: 256,
+    <Post
+      author={{
+        imageUrl: 'https://picsum.photos/200',
+        username: 'johndoe',
       }}
-    >
-      <Image src={'https://picsum.photos/200/300'} />
-      <Text>Card</Text>
-    </Card>
+      imageUrl="https://picsum.photos/200/300"
+    />
   );
 };
