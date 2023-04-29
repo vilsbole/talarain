@@ -4,11 +4,11 @@ import { capitalize } from '../utils';
 
 export const Profile: React.FC<
   PropsWithChildren<{
-    imageUrl: string;
+    profileUrl: string;
     firstName: string;
     lastName: string;
   }>
-> = ({ imageUrl, firstName, lastName }) => {
+> = ({ profileUrl, firstName, lastName }) => {
   return (
     <Flex sx={{}}>
       <Avatar
@@ -16,7 +16,7 @@ export const Profile: React.FC<
           width: '48px',
           height: '48px',
         }}
-        src={imageUrl}
+        src={profileUrl}
       />
 
       <Flex sx={{ marginLeft: '0.75em' }}>

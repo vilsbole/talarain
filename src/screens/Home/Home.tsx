@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { Carrousel } from '../../components';
-import { getPosts } from '../../services';
+import { getPosts, getPostDetails } from '../../services';
 
 const data = [
   {
     author: {
-      imageUrl: 'https://picsum.photos/200',
+      profileUrl: 'https://picsum.photos/200',
       firstName: 'john',
       lastName: 'doe',
     },
@@ -21,10 +21,13 @@ const data = [
 
 export const Home = () => {
   useEffect(() => {
-    getPosts().then((posts) => {
-      console.log(posts);
+    getPosts().then(({ posts }) => {
+      return getPostDetails(posts[0]).then((post) => {
+        console.log(post);
+      });
     });
   }, []);
+
   return (
     <Carrousel
       post={data[0]}

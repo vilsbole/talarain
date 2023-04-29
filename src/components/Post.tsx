@@ -12,7 +12,7 @@ export const Post: React.FC<{
     likes: number;
   };
   author: {
-    imageUrl: string;
+    profileUrl: string;
     firstName: string;
     lastName: string;
   };
@@ -25,7 +25,7 @@ export const Post: React.FC<{
       }}
     >
       <Profile
-        imageUrl={author.imageUrl}
+        profileUrl={author.profileUrl}
         firstName={author.firstName}
         lastName={author.lastName}
       />

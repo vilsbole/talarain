@@ -3,7 +3,7 @@ export interface ApiResponse<T> {
   response: T;
 }
 
-interface PostResponse {
+export interface PostResponse {
   id: string;
   created: string;
   mediaId: string;
