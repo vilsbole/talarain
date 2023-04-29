@@ -9,6 +9,8 @@ import type { Post } from '../types';
 
 const API_URL = 'https://apis.slstice.com/mock';
 const API_KEY = process.env.REACT_APP_API_KEY;
+const MAX_POSTS = 5; // FYI: API endpoint limit: "You can only retrieve maximum 20 elements at a time""
+export const MIN_DELAY = 4000; // FYI: API rate limiting seems to be 5 seconds
 
 const apiFetch = async <T>(
   path: string,
@@ -25,8 +27,14 @@ const apiFetch = async <T>(
   return await response.json();
 };
 
-export const getPosts = async (): Promise<PostsResponse> => {
-  const res = await apiFetch<PostsResponse>('/posts');
+export const getPosts = async (queryParams: {
+  offset: number;
+}): Promise<PostsResponse> => {
+  const query = new URLSearchParams({
+    limit: MAX_POSTS.toString(),
+    offset: queryParams.offset.toString(),
+  });
+  const res = await apiFetch<PostsResponse>('/posts', query);
   return res.response;
 };
 
@@ -46,6 +54,7 @@ export const getPostDetails = async (post: PostResponse) => {
     getUser(post.user.username),
   ]).then(
     ([{ media }, { user }]): Post => ({
+      id: post.id,
       title: post.title,
       desc: post.description,
       image: {

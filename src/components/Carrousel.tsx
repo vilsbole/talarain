@@ -4,16 +4,16 @@ import { Post } from './Post';
 
 export const Carrousel: React.FC<{
   post: ComponentProps<typeof Post>;
+  intervalDelay: number;
   getNextPost: () => void;
-}> = ({ post, getNextPost }) => {
-  const [delay] = useState(5000);
+}> = ({ post, getNextPost, intervalDelay }) => {
   const [isRunning] = useState(true);
 
   useInterval(
     () => {
       getNextPost();
     },
-    isRunning ? delay : null
+    isRunning ? intervalDelay : null
   );
 
   return <Post {...post} />;

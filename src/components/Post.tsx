@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Box, Card, Divider, Image, Text } from 'theme-ui';
+import { Paragraph, Flex, Box, Card, Divider, Image, Text } from 'theme-ui';
 import { Profile } from './Profile';
 import { IconLike } from './IconLike';
 import type { Post as PostDetails } from '../types';
@@ -43,9 +43,7 @@ export const Post: React.FC<PostDetails> = ({ image, author, title, desc }) => {
         <Text as="h1" sx={{ fontSize: '4' }}>
           {title}
         </Text>
-        <Text as="p" sx={{ fontSize: '2' }}>
-          {desc}
-        </Text>
+        <Paragraph sx={{ fontSize: '2' }}>{desc}</Paragraph>
       </Flex>
     </Card>
   );
