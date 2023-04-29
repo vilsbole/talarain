@@ -18,9 +18,7 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => (
         alignItems: 'center',
         variant: 'layout.header',
       }}
-    >
-      Header content
-    </header>
+    ></header>
     <main
       sx={{
         width: '100%',
@@ -44,8 +42,6 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => (
         width: '100%',
         variant: 'layout.footer',
       }}
-    >
-      Footer content
-    </footer>
+    ></footer>
   </div>
 );
