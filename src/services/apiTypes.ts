@@ -12,7 +12,7 @@ export interface PostResponse {
     username: string;
   };
   likes: number;
-  title: number;
+  title: string;
   description: string;
 }
 

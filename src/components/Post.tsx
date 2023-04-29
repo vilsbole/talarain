@@ -2,21 +2,9 @@ import React from 'react';
 import { Flex, Box, Card, Divider, Image, Text } from 'theme-ui';
 import { Profile } from './Profile';
 import { IconLike } from './IconLike';
+import type { Post as PostDetails } from '../types';
 
-export const Post: React.FC<{
-  title: string;
-  desc: string;
-  image: {
-    url: string;
-    createdAt: string;
-    likes: number;
-  };
-  author: {
-    profileUrl: string;
-    firstName: string;
-    lastName: string;
-  };
-}> = ({ image, author, title, desc }) => {
+export const Post: React.FC<PostDetails> = ({ image, author, title, desc }) => {
   return (
     <Card
       sx={{

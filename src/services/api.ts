@@ -54,7 +54,7 @@ export const getPostDetails = async (post: PostResponse) => {
         likes: media.statistics.likes,
       },
       author: {
-        profileURL: user.profile_images.medium,
+        profileUrl: user.profile_images.medium,
         firstName: user.first_name,
         lastName: user.last_name,
       },
