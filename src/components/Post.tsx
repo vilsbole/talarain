@@ -1,6 +1,7 @@
 import React, { PropsWithChildren } from 'react';
-import { Box, Card, Divider, Image, Text } from 'theme-ui';
+import { Flex, Box, Card, Divider, Image, Text } from 'theme-ui';
 import { Profile } from './Profile';
+import { IconLike } from './IconLike';
 
 export const Post: React.FC<
   PropsWithChildren<{
@@ -22,6 +23,7 @@ export const Post: React.FC<
     <Card
       sx={{
         padding: '2em',
+        maxHeight: '70%',
       }}
     >
       <Profile
@@ -30,15 +32,33 @@ export const Post: React.FC<
         lastName={author.lastName}
       />
       <Divider />
-      <Box>
-        <Image src={image.url} />
-        <Text>{image.createdAt}</Text>
-        <Text>{image.likes}</Text>
-      </Box>
-      <Box>
-        <Text>{title}</Text>
-        <Text>{desc}</Text>
-      </Box>
+      <Flex sx={{ flexDirection: 'column', alignContent: 'flex-start' }}>
+        <Image
+          src={image.url}
+          sx={{ objectFit: 'contain', aspectRation: '1/1' }}
+        />
+        <Divider />
+        <Flex
+          sx={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}
+        >
+          <Text sx={{ verticalAlign: 'middle' }}>{image.createdAt}</Text>
+          <Box sx={{ display: 'inline-block' }}>
+            <IconLike size="1.1em" />
+            <Text sx={{ verticalAlign: 'middle' }}>{image.likes}</Text>
+          </Box>
+        </Flex>
+      </Flex>
+      <Flex sx={{ flexDirection: 'column', marginTop: '2em' }}>
+        <Text as="h1" sx={{ fontSize: '4' }}>
+          {title}
+        </Text>
+        <Text as="p" sx={{ fontSize: '2' }}>
+          {desc}
+        </Text>
+      </Flex>
     </Card>
   );
 };

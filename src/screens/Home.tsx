@@ -9,7 +9,7 @@ export const Home = () => {
         lastName: 'doe',
       }}
       image={{
-        url: 'https://picsum.photos/200/300',
+        url: 'https://picsum.photos/300/200',
         createdAt: '2021-01-01',
         likes: 10,
       }}
