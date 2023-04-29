@@ -29,7 +29,7 @@ export interface MediaResponse {
       views: number;
       downloads: number;
       likes: number;
-      created: number;
+      created: number; // Receives 10 digits timestamp (seconds)
     };
     urls: {
       raw: string;

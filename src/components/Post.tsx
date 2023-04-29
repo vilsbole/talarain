@@ -30,7 +30,9 @@ export const Post: React.FC<PostDetails> = ({ image, author, title, desc }) => {
             justifyContent: 'space-between',
           }}
         >
-          <Text sx={{ verticalAlign: 'middle' }}>{image.createdAt}</Text>
+          <Text sx={{ verticalAlign: 'middle' }}>
+            {new Date(image.createdAt * 1000).toLocaleDateString('en-GB')}
+          </Text>
           <Box sx={{ display: 'inline-block' }}>
             <IconLike size="1.1em" />
             <Text sx={{ verticalAlign: 'middle' }}>{image.likes}</Text>
