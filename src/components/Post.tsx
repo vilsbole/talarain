@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 import { Flex, Box, Card, Divider, Image, Text } from 'theme-ui';
 import { Profile } from './Profile';
 import { IconLike } from './IconLike';
