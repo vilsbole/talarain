@@ -61,19 +61,6 @@ export const Home = () => {
 
   return (
     <>
-      {/* <pre>
-        <code>
-          {JSON.stringify(
-            {
-              rawPosts: state.rawPosts.length,
-              currentIdx: state.currentIdx,
-              currentPostId: getCurrentPost(state)?.id,
-            },
-            null,
-            2
-          )}
-        </code>
-      </pre> */}
       {!state.error && post && (
         <Carrousel
           intervalDelay={MIN_DELAY}
