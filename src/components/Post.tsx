@@ -1,10 +1,13 @@
 import React from 'react';
 import { Paragraph, Flex, Box, Card, Divider, Image, Text } from 'theme-ui';
+import { time } from '../utils';
 import { Profile } from './Profile';
 import { IconLike } from './IconLike';
 import type { Post as PostDetails } from '../types';
 
 export const Post: React.FC<PostDetails> = ({ image, author, title, desc }) => {
+  const formatDate = (timestamp: number) => time(timestamp).fromNow();
+
   return (
     <Card
       sx={{
@@ -30,7 +33,7 @@ export const Post: React.FC<PostDetails> = ({ image, author, title, desc }) => {
           }}
         >
           <Text sx={{ verticalAlign: 'middle' }}>
-            {new Date(image.createdAt * 1000).toLocaleDateString('en-GB')}
+            {formatDate(image.createdAt * 1000)}
           </Text>
           <Box sx={{ display: 'inline-block' }}>
             <IconLike size="1.1em" />
