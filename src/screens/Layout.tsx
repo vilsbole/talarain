@@ -7,7 +7,7 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => (
     sx={{
       display: 'flex',
       flexDirection: 'column',
-      minHeight: '100vh',
+      minHeight: '100%',
       variant: 'layout.root',
     }}
   >
@@ -17,6 +17,7 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => (
         display: 'flex',
         alignItems: 'center',
         variant: 'layout.header',
+        minHeight: '2em',
       }}
     ></header>
     <main
@@ -31,7 +32,6 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => (
           maxWidth: 768,
           mx: 'auto',
           px: 3,
-          marginTop: '20px',
           variant: 'layout.container',
         }}
       >
@@ -42,6 +42,7 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => (
       sx={{
         width: '100%',
         variant: 'layout.footer',
+        minHeight: '2em',
       }}
     ></footer>
   </div>

@@ -9,7 +9,6 @@ export const Post: React.FC<PostDetails> = ({ image, author, title, desc }) => {
     <Card
       sx={{
         padding: '2em',
-        maxHeight: '70%',
       }}
     >
       <Profile
@@ -21,7 +20,7 @@ export const Post: React.FC<PostDetails> = ({ image, author, title, desc }) => {
       <Flex sx={{ flexDirection: 'column', alignContent: 'flex-start' }}>
         <Image
           src={image.url}
-          sx={{ objectFit: 'contain', aspectRation: '1/1' }}
+          sx={{ objectFit: 'contain', maxHeight: '575px', aspectRatio: '1/1' }}
         />
         <Divider />
         <Flex
