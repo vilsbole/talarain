@@ -31,6 +31,7 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => (
           maxWidth: 768,
           mx: 'auto',
           px: 3,
+          marginTop: '20px',
           variant: 'layout.container',
         }}
       >

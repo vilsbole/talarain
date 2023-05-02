@@ -6,21 +6,25 @@ interface State {
   rawPostOffset: number;
   posts: Post[];
   currentIdx: number;
-  error: undefined | string;
+  error: unknown;
 }
 
 export enum ActionKind {
   FETCH_RAW_POSTS_SUCCESS = 'FETCH_RAW_POSTS_SUCCESS',
   FETCH_RAW_POSTS_ERROR = 'FETCH_RAW_POSTS_ERROR',
-  SET_POST = 'SET_POST',
+  FETCH_POST_SUCCESS = 'FETCH_POST_SUCCESS',
+  FETCH_POST_ERROR = 'FETCH_POST_ERROR',
   INCREMENT_CURRENT_IDX = 'INCREMENT_CURRENT_IDX',
+  RESET = 'RESET',
 }
 
 type Action =
   | { type: ActionKind.FETCH_RAW_POSTS_SUCCESS; payload: PostResponse[] }
-  | { type: ActionKind.FETCH_RAW_POSTS_ERROR; payload: string }
-  | { type: ActionKind.SET_POST; payload: Post }
-  | { type: ActionKind.INCREMENT_CURRENT_IDX };
+  | { type: ActionKind.FETCH_RAW_POSTS_ERROR; payload: unknown }
+  | { type: ActionKind.FETCH_POST_SUCCESS; payload: Post }
+  | { type: ActionKind.FETCH_POST_ERROR; payload: unknown }
+  | { type: ActionKind.INCREMENT_CURRENT_IDX }
+  | { type: ActionKind.RESET };
 
 export const DEFAULT_STATE: State = {
   rawPosts: [],
@@ -39,11 +43,12 @@ export const reducer: Reducer<State, Action> = (state, action): State => {
         rawPostOffset: state.rawPostOffset + action.payload.length,
       };
     case ActionKind.FETCH_RAW_POSTS_ERROR:
+    case ActionKind.FETCH_POST_ERROR:
       return {
         ...state,
         error: action.payload,
       };
-    case ActionKind.SET_POST:
+    case ActionKind.FETCH_POST_SUCCESS:
       return {
         ...state,
         posts: [...state.posts, action.payload],
@@ -53,6 +58,8 @@ export const reducer: Reducer<State, Action> = (state, action): State => {
         ...state,
         currentIdx: state.currentIdx + 1,
       };
+    case ActionKind.RESET:
+      return { ...DEFAULT_STATE };
     default:
       return state;
   }
@@ -64,4 +71,11 @@ export const getCurrentPost = (state: State): Post => {
 
 export const getCurrentRawPost = (state: State): PostResponse => {
   return state.rawPosts[state.currentIdx];
+};
+
+export const shouldFetchRawPosts = (state: State): Boolean => {
+  return (
+    state.rawPosts.length === 0 ||
+    (state.rawPosts.length > 0 && state.rawPosts.length - 2 <= state.currentIdx)
+  );
 };
